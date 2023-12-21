@@ -8,8 +8,26 @@ document.querySelector('#search-btn').onclick=()  =>
 	navbar.classList.remove('active');
 }
 
-
 let shoppingCart=document.querySelector('.shopping-cart');
+let cartTotal = document.querySelector('.total');
+
+let total = 0;
+
+function addToCart(imag, name, price) {
+  const divBox = document.createElement("div");
+  divBox.className = "box";
+  divBox.innerHTML = 
+  `<i class="fa fa-trash">
+  </i><img src="image/${imag}.jpeg">
+  <div class="content">
+  <h3>${name}</h3>
+  <span class="price">Rs. ${price}/-</span>
+  <span class="quantity">Qty:1</span>
+  </div>`
+  total += Number(price);
+  cartTotal.innerHTML = `total:Rs. ${total}/-`;
+  shoppingCart.prepend(divBox);
+}
 
 document.querySelector('#cart-btn').onclick=()  =>
 {
